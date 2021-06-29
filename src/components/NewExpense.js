@@ -1,18 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import "../css/NewExpense.css";
 import ExpenseForm from "./ExpenseForm";
 const NewExpense = (props) => {
+  const [FormType, setFormType] = useState(false);
+
   const getFormData = (data) => {
     const expenseData = {
       ...data,
       id: Math.random().toString(),
     };
     props.onFormSubmit(expenseData);
-    // console.log(expenseData);
+    setFormType(false);
+  };
+  const updateFormType = () => {
+    setFormType(true);
+  };
+  const updateFormTypeFromChild = () => {
+    setFormType(true);
   };
   return (
     <div className="new-expense">
-      <ExpenseForm onFormSubmitted={getFormData} />
+      {!FormType && (
+        <button type="button" onClick={updateFormType}>
+          Add Expense
+        </button>
+      )}
+      {FormType && (
+        <ExpenseForm
+          onFormSubmitted={getFormData}
+          onCancel={updateFormTypeFromChild}
+        />
+      )}
     </div>
   );
 };
