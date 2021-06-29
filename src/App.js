@@ -30,11 +30,12 @@ function App() {
     });
   };
   const newYear = (data) => {
-    console.log("in main",data);
+    console.log("in main", data);
+    
   };
+  
   return (
     <div>
-      {/* <h2>Let's get started!</h2> */}
       <NewExpense onFormSubmit={getNewExpense} />
       <Expenses expenses={expenses} newYear={newYear} />
     </div>
