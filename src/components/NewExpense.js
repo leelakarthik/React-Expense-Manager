@@ -16,7 +16,7 @@ const NewExpense = (props) => {
     setFormType(true);
   };
   const updateFormTypeFromChild = () => {
-    setFormType(true);
+    setFormType(false);
   };
   return (
     <div className="new-expense">
